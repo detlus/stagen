@@ -1,0 +1,12 @@
+var stagen = require('../lib/stagen');
+
+
+
+
+// var defaults = {
+//   config_filename: '_config.yml',
+//   content_path: '_content'
+// };
+// Get directory path of site files.
+var pwd = process.cwd();
+var site = new stagen.Site(pwd);
