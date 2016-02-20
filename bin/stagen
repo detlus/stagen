@@ -1,12 +1,13 @@
 var stagen = require('../lib/stagen');
+var ContentManager = require('../lib/content-manager');
 
-
-
-
-// var defaults = {
-//   config_filename: '_config.yml',
-//   content_path: '_content'
-// };
 // Get directory path of site files.
 var pwd = process.cwd();
+
 var site = new stagen.Site(pwd);
+// site.generate();
+// console.log(site.getCacheDir());
+var cm = new ContentManager(site);
+cm.generateOutput();
+cm.copyThemeAssets();
+site.finalize();
