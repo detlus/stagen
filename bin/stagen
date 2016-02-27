@@ -11,7 +11,5 @@ var cm = new ContentManager(site);
 // cm.scanFiles();
 cm.generateOutput();
 cm.generateListingPages();
-// cm.copyThemeAssets();
-// var ip = new IndexPage(cm);
-// ip.contents('post', 2, 0);
+cm.copyThemeAssets();
 site.finalize();
