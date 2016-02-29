@@ -5,8 +5,7 @@ var ContentManager = require('../lib/content-manager');
 var pwd = process.cwd();
 
 var site = new stagen.Site(pwd);
-// site.generate();
-// console.log(site.getCacheDir());
+site.clean();
 var cm = new ContentManager(site);
 // cm.scanFiles();
 cm.generateOutput();
