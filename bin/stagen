@@ -1,4 +1,5 @@
 var stagen = require('../lib/stagen');
+var Post = require('../lib/content-types/post');
 var ContentManager = require('../lib/content-manager');
 
 // Get directory path of site files.
@@ -7,7 +8,7 @@ var pwd = process.cwd();
 var site = new stagen.Site(pwd);
 site.clean();
 var cm = new ContentManager(site);
-cm.registerType('post', stagen.Post);
+cm.registerType('post', Post);
 // cm.scanFiles();
 cm.generateOutput('post');
 cm.generateListingPages();
