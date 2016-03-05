@@ -10,6 +10,7 @@ var cm = new ContentManager(site);
 cm.registerType(require('../lib/content-types/post'));
 cm.registerType(require('../lib/content-types/listing-page'));
 cm.registerType(require('../lib/content-types/page'));
+cm.registerType(require('../lib/content-types/feed'));
 cm.generateOutput();
 cm.copyThemeAssets();
 site.finalize();
