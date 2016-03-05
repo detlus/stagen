@@ -10,7 +10,6 @@ site.clean();
 var cm = new ContentManager(site);
 cm.registerType('post', Post);
 cm.registerType('listing', require('../lib/content-types/listing-page'));
-cm.generateOutput('post');
-cm.generateOutput('listing');
+cm.generateOutput();
 cm.copyThemeAssets();
 site.finalize();
