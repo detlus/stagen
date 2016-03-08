@@ -1,9 +1,20 @@
 #!/usr/bin/env node
+
+var _ = require('underscore'),
+  path = require('path');
+
+var argv = require('minimist')(process.argv.slice(2), {boolean: true});
+
+var pwd = process.cwd();
+if (argv._.length) {
+  // Change path if path is provided.
+  argv._[0] = path.resolve(pwd, argv._[0]);
+  pwd = argv._[0];
+}
+
 var stagen = require('../lib/stagen');
 var ContentManager = require('../lib/content-manager');
 
-// Get directory path of site files.
-var pwd = process.cwd();
 
 var site = new stagen.Site(pwd);
 if (site.init()) {
