@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var stagen = require('../lib/stagen');
 var ContentManager = require('../lib/content-manager');
 
