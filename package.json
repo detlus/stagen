@@ -15,6 +15,10 @@
   ],
   "author": "Junaid",
   "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/detlus/stagen.git"
+  },
   "dependencies": {
     "front-matter": "^2.0.6",
     "js-yaml": "^3.5.3",
