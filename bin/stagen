@@ -29,5 +29,6 @@ if (site.init()) {
   cm.registerType(require('../lib/content-types/feed'));
   cm.generateOutput();
   cm.copyThemeAssets();
+  cm.copyAssets();
 }
 site.finalize();
