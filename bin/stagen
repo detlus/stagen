@@ -18,6 +18,9 @@ var ContentManager = require('../lib/content-manager');
 
 var site = new stagen.Site(pwd);
 if (site.init()) {
+  if (argv['content-all']) {
+    site.setContentCriteria('published', 'any');
+  }
   site.clean();
   var cm = new ContentManager(site);
   cm.registerType(require('../lib/content-types/post'));
