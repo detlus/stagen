@@ -7,6 +7,8 @@ Stagen is a static site generator written JavaScript to work on nodejs environme
 * Twig template
 * Built in support for different content types like Post, Page, Listing Page, Feed.
 * Reusable themes
+* Menus
+* JS/CSS Libraries
 
 # Releases
 
