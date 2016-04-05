@@ -1,34 +1,37 @@
 #!/usr/bin/env node
 
-var _ = require('underscore'),
-  path = require('path');
+var pjson = require('../package.json');
+var version = pjson.version;
+var help = `stagen ${version} -- stagen is a static site generator.
+
+Usage:
+  stagen <subcommand> [options]
+
+Options:
+  -s, --source [DIR] Source directory (defaults to ./)
+  -d, --destination [DIR]  Destination directory (defaults to ./site)
+  -h, --help         Show this message
+  -v, --version      Print the name and version
+
+Subcommands:
+  build    Build the site
+`;
 
 var argv = require('minimist')(process.argv.slice(2), {boolean: true});
 
-var pwd = process.cwd();
-if (argv._.length) {
-  // Change path if path is provided.
-  argv._[0] = path.resolve(pwd, argv._[0]);
-  pwd = argv._[0];
+if (argv.h) {
+  console.log(help);
+  process.exit();
+}
+else if(argv.v) {
+  console.log(`stagen ${version}`);
+  process.exit();
 }
 
-var stagen = require('../lib/stagen');
-var ContentManager = require('../lib/content-manager');
-
-
-var site = new stagen.Site(pwd);
-if (site.init()) {
-  if (argv['content-all']) {
-    site.setContentCriteria('published', 'any');
-  }
-  site.clean();
-  var cm = new ContentManager(site);
-  cm.registerType(require('../lib/content-types/post'));
-  cm.registerType(require('../lib/content-types/listing-page'));
-  cm.registerType(require('../lib/content-types/page'));
-  cm.registerType(require('../lib/content-types/feed'));
-  cm.generateOutput();
-  cm.copyThemeAssets();
-  cm.copyAssets();
+if (argv._[0] === 'build') {
+  var build = require('../lib/subcommands/build');
+  build(argv);
 }
-site.finalize();
+else {
+  console.log(help);
+}
