@@ -15,6 +15,7 @@ Options:
 
 Subcommands:
   build    Build the site
+  clean    Clean the destination directoy
 `;
 
 var argv = require('minimist')(process.argv.slice(2), {boolean: true});
@@ -31,6 +32,9 @@ else if(argv.v) {
 if (argv._[0] === 'build') {
   var build = require('../lib/subcommands/build');
   build(argv);
+}
+else if (argv._[0] === 'clean') {
+  require('../lib/subcommands/clean')(argv);
 }
 else {
   console.log(help);
