@@ -9,7 +9,6 @@ Usage:
 
 Options:
   -s, --source [DIR] Source directory (defaults to ./)
-  -d, --destination [DIR]  Destination directory (defaults to ./site)
   -h, --help         Show this message
   -v, --version      Print the name and version
 
@@ -21,10 +20,12 @@ Subcommands:
 var argv = require('minimist')(process.argv.slice(2), {boolean: true});
 
 if (argv.h) {
+  // Show help text.
   console.log(help);
   process.exit();
 }
 else if(argv.v) {
+  // Show version info.
   console.log(`stagen ${version}`);
   process.exit();
 }
@@ -33,5 +34,8 @@ if (subcommands.indexOf(argv._[0]) !== -1) {
   require(`../lib/subcommands/${argv._[0]}`)(argv);
 }
 else {
+  // User did not provide any option or command.
+  // Show help message.
   console.log(help);
+  process.exit(1);
 }
