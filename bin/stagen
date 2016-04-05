@@ -28,13 +28,9 @@ else if(argv.v) {
   console.log(`stagen ${version}`);
   process.exit();
 }
-
-if (argv._[0] === 'build') {
-  var build = require('../lib/subcommands/build');
-  build(argv);
-}
-else if (argv._[0] === 'clean') {
-  require('../lib/subcommands/clean')(argv);
+var subcommands = ['build', 'clean'];
+if (subcommands.indexOf(argv._[0]) !== -1) {
+  require(`../lib/subcommands/${argv._[0]}`)(argv);
 }
 else {
   console.log(help);
