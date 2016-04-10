@@ -13,8 +13,12 @@ Options:
   -v, --version      Print the name and version
 
 Subcommands:
-  build    Build the site
-  clean    Clean the destination directoy
+  build         Build the site
+  build-single  Generate output for single content item
+  clean         Clean the destination directoy
+
+build-single:
+  -c       Content file to process
 `;
 
 var argv = require('minimist')(process.argv.slice(2), {boolean: true});
@@ -29,7 +33,7 @@ else if(argv.v) {
   console.log(`stagen ${version}`);
   process.exit();
 }
-var subcommands = ['build', 'clean'];
+var subcommands = ['build', 'build-single', 'clean'];
 if (subcommands.indexOf(argv._[0]) !== -1) {
   require(`../lib/subcommands/${argv._[0]}`)(argv);
 }
