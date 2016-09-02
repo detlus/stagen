@@ -17,6 +17,7 @@ Subcommands:
   build         Build the site
   build-single  Generate output for single content item
   clean         Clean the destination directoy
+  serve         Publishes site on HTTP server and watches for changes.
 
 build-single:
   -c       Content file to process
@@ -34,7 +35,7 @@ else if(argv.v) {
   console.log(`stagen ${version}`);
   process.exit();
 }
-var subcommands = ['build', 'build-single', 'clean'];
+var subcommands = ['build', 'build-single', 'clean', 'serve'];
 if (subcommands.indexOf(argv._[0]) !== -1) {
   require(`../lib/subcommands/${argv._[0]}`)(argv);
 }
