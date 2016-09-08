@@ -21,6 +21,10 @@ Subcommands:
 
 build-single:
   -c       Content file to process
+serve
+  --nowatch     Just serve content using HTTP server. Do not listen to changes.
+  --port        Port number [8080]
+  --host        Hostname [0.0.0.0]
 `;
 
 var argv = require('minimist')(process.argv.slice(2), {boolean: true});
