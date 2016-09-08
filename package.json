@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "chokidar": "^1.6.0",
+    "ecstatic": "^2.1.0",
     "front-matter": "^2.0.6",
     "js-yaml": "^3.5.3",
     "minimist": "^1.2.0",
