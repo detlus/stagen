@@ -19,9 +19,19 @@ Stagen in still in active development and a stable release is not yet made.
 
 Stagen requires Node.js and pandoc.
 
+## Node.js
+
+Pre-build binary packagers are available for [download from NodeJS official site.](https://nodejs.org/en/download/)
+
+You can use [NVM](https://github.com/creationix/nvm) on Linux and Mac OS platforms to install different NodeJS versions same time.
+
+## Pandoc
+
+Please refer official [documentation page](http://pandoc.org/installing.html) for installing pandoc in your system.
+
 # Installation
 
-Install it using npm.
+Install it globally using npm.
 
     npm install -g stagen
 
