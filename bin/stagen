@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-var pjson = require('../package.json');
-var version = pjson.version;
-var help = `stagen ${version} -- stagen is a static site generator.
+import packageJson from '../package.json' with { type: 'json' };
+import minimist from 'minimist';
+// var version = _version;
+var help = `stagen ${packageJson.version} -- stagen is a static site generator.
 
 Usage:
   stagen <subcommand> [options]
@@ -27,7 +28,7 @@ serve
   --host        Hostname [0.0.0.0]
 `;
 
-var argv = require('minimist')(process.argv.slice(2), {boolean: true});
+var argv = minimist(process.argv.slice(2), {boolean: true});
 
 if (argv.h) {
   // Show help text.
@@ -41,7 +42,15 @@ else if(argv.v) {
 }
 var subcommands = ['build', 'build-single', 'clean', 'serve'];
 if (subcommands.indexOf(argv._[0]) !== -1) {
-  require(`../lib/subcommands/${argv._[0]}`)(argv);
+  // require(`../lib/subcommands/${argv._[0]}`)(argv);
+  // import(`../lib/subcommands/${argv._[0]}`)
+  //   .then(command => {
+  //     console.log(command);
+  //     command(argv);
+  //   })
+  //   .catch(err => console.error(err));
+  const command = await import(`../lib/subcommands/${argv._[0]}.mjs`);
+  command.command(argv);
 }
 else {
   // User did not provide any option or command.
